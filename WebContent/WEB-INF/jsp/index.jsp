@@ -10,6 +10,7 @@
 	<a href="/HelloWeb/employee"> Register</a>
 	<br>
 	<a href="/HelloWeb/login">  Login</a>
-	
+	<br>
+	<a href="/HelloWeb/search">  Search</a>
 </body>
 </html>

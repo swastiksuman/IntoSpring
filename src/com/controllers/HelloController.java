@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 
 import com.beans.Employee;
 import com.dao.EmployeeDAO;
+import com.services.EmployeeService;
 
 @Controller
 public class HelloController{
@@ -28,9 +29,8 @@ public class HelloController{
        model.addAttribute("name", employee.getName());
        model.addAttribute("contactNumber", employee.getContactNumber());
        model.addAttribute("id", employee.getId());
-       EmployeeDAO emp = new EmployeeDAO(employee);
-       emp.saveEmployee();
-       
+       EmployeeService employeeService = new EmployeeService(employee);
+       employeeService.updateEmployee();
        return "addEmployee";
    }
 

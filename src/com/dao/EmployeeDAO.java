@@ -22,7 +22,7 @@ public class EmployeeDAO {
 		this.employee = employee;
 	}
 	
-	public void saveEmployee(){
+	public boolean saveEmployee(){
 		MySqlConnectionFactory connectDB = new MySqlConnectionFactory();
 		//Connection connection = connectDB.connectToDB();
 		Connection connection = connectDB.getConnection().connectToDB();
@@ -34,11 +34,36 @@ public class EmployeeDAO {
 			statement.setString(2, employee.getName());
 			statement.setString(3, employee.getContactNumber());
 			statement.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		
+	}
+	
+	
+	public Employee getEmployee(){
+		MySqlConnectionFactory connectDB = new MySqlConnectionFactory();
+		//Connection connection = connectDB.connectToDB();
+		Connection connection = connectDB.getConnection().connectToDB();
+		
+		PreparedStatement statement;
+		try{
+			statement = (PreparedStatement) connection.prepareStatement("Select * from employeeinfo where employeeID=?");
+			statement.setInt(1, (int) employee.getId());
+			ResultSet recordSet = statement.executeQuery();
+			
+			recordSet.first();
+			employee.setId(recordSet.getInt("employeeID"));
+			employee.setName(recordSet.getString("employeeName"));
+			employee.setContactNumber(recordSet.getString("employeeContact"));
+			return employee;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }
