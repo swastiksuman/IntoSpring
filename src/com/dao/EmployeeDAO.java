@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,8 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.beans.Employee;
 import com.connections.Connections;
 import com.dbfactory.MySqlConnectionFactory;
-import com.mysql.jdbc.PreparedStatement;
-
 
 public class EmployeeDAO {
 

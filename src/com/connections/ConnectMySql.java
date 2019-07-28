@@ -21,12 +21,12 @@ public class ConnectMySql implements Connections{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Properties prop = new Properties();
-			prop.load(new FileInputStream(propFilePath));
-			String connectionURL = prop.getProperty("MySQLURL");
-			String username = prop.getProperty("username");
-			String password = prop.getProperty("password");
+			//prop.load(new FileInputStream(propFilePath));
+			String connectionURL = "jdbc:mysql://localhost:3306/employeedb";
+			String username = "root";
+			String password = "mysql@123";
 			connection=DriverManager.getConnection(connectionURL,username,password); 
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}	
 	}
