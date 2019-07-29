@@ -1,5 +1,8 @@
 package com.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,11 +27,17 @@ public class SearchController {
      BindingResult result, ModelMap model){
 		
 		EmployeeService empService = new EmployeeService(employee);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		if(employee.getId()>0) {
 		employee = empService.getEmployee(employee);
-		model.addAttribute("name", employee.getName());
-	    model.addAttribute("contactNumber", employee.getContactNumber());
-	    model.addAttribute("id", employee.getId());
-	    
+		employeeList.add(employee);
+		model.addAttribute("employeeList", employeeList);
+		}else {
+			for(Employee e: empService.getAllEmployee()) {
+				System.out.println(e.getName());
+			}
+			model.addAttribute("employeeList", empService.getAllEmployee());
+		}
 	    return "searchResult";
 	}
 

@@ -1,5 +1,7 @@
 package com.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.beans.Employee;
@@ -23,6 +25,11 @@ public class EmployeeService {
 	public Employee getEmployee(Employee employee){
 		empDAO = new EmployeeDAO(employee);
 		return empDAO.getEmployee();
+	}
+	
+	public List<Employee> getAllEmployee(){
+		empDAO = new EmployeeDAO();
+		return empDAO.getAllEmployees();
 	}
 }
 
