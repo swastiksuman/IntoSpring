@@ -13,20 +13,19 @@
 <title>ZELTAR</title>
 </head>
 <body>
-	<form:form method="POST" action="/HelloWeb/searchResult" modelAttribute="employee">
-             <table>
+	    <table>
                 
                 <tr>
-                    <td><form:label path="id">Id</form:label></td>
+                    <td><label path="id">Id</label></td>
                     
-                    <td><form:input path="id"/></td>
+                    <td><input id="employeeid"/></td>
                 </tr>
                                 <tr>
-                    <td><input type="submit" value="Fetch"/></td>
+                    <td><button onclick="showData()">Fetch</button></td>
                 </tr>
             </table>
-        </form:form>
-        <button onclick="showData()">Test</button>
+        
+        
         
         <div>
         	<p id="result"></p>
