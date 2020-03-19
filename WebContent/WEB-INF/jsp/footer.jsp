@@ -1,1 +1,3 @@
-<p>Copyright Swastik<p>
+<footer class="page-footer">
+<p>Copyright Swastik</p>
+</footer>
