@@ -11,7 +11,22 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+<script>
+	function register(){
+		$.ajax({
+			type: "GET",
+		  url: "/HelloWeb/employee",
+		  
+		  success: function( result ) {
+			  console.log(result);
+		    $( "#content" ).html(result);
+		  },
+		  error: function(error){
+			  console.log(error);
+		  }
+		});
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ZELTAR</title>
 </head>
@@ -20,9 +35,17 @@
 	<div class="nav-wrapper">
 		<a href="#" class="brand-logo right">ZELTAR</a>
 		<ul id="nav-mobile" class="left hide-on-med-and-down">
-			<li><a href="/HelloWeb/employee">Register</a></li>
+			<li onclick="register()">Register</li>
 			<li><a href="/HelloWeb/search">Search</a></li>
 		</ul>
+		<div id="content" class="container">
+			<div id="content" class="row">
+			
+			</div>
+			<div class="row">
+				
+			</div>
+		</div>
 	</div>
 	</nav>
 

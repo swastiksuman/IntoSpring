@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping({"/index", ""})
 public class HomepageController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String welcomeHome(ModelMap model){		

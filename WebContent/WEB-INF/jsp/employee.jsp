@@ -6,9 +6,9 @@
     <head>
     </head>
     <body>
-        <h3>Welcome, Enter The Employee Details</h3>
         <form:form method="POST" action="/HelloWeb/addEmployee" modelAttribute="employee">
-             <table>
+             <table class="striped">
+             	<tbody>
                 <tr>
                     <td><form:label path="name">Name</form:label></td>
                     <td><form:input path="name"/></td>
@@ -24,6 +24,7 @@
                 <tr>
                     <td><input type="submit" value="Submit"/></td>
                 </tr>
+                </tbody>
             </table>
         </form:form>
     </body>
