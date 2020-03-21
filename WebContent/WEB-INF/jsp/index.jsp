@@ -5,17 +5,27 @@
 <head>
 <!-- Compiled and minified JavaScript -->
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <script>
 	function register(){
 		$.ajax({
 			type: "GET",
 		  url: "/HelloWeb/employee",
+		  
+		  success: function( result ) {
+			  console.log(result);
+		    $( "#content" ).html(result);
+		  },
+		  error: function(error){
+			  console.log(error);
+		  }
+		});
+	}
+	function listAll(){
+		$.ajax({
+			type: "GET",
+		  url: "/HelloWeb/getAll",
 		  
 		  success: function( result ) {
 			  console.log(result);
@@ -37,8 +47,9 @@
 		<ul id="nav-mobile" class="left hide-on-med-and-down">
 			<li onclick="register()">Register</li>
 			<li><a href="/HelloWeb/search">Search</a></li>
+			<li onclick="listAll()">List</li>
 		</ul>
-		<div id="content" class="container">
+		<div class="container">
 			<div id="content" class="row">
 			
 			</div>

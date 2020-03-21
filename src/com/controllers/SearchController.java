@@ -22,6 +22,12 @@ public class SearchController {
 		return new ModelAndView("search","employee",new Employee());
 	}
 	
+	@RequestMapping(value="/getAll", method = RequestMethod.GET)
+	public String getAll(ModelMap model){
+		model.addAttribute("employeeList", EmployeeService.employeeList);
+		return "searchResult";
+	}
+	
 	@RequestMapping(value = "/searchResult", method = RequestMethod.POST)
 	public String search(@ModelAttribute("employee")Employee employee, 
      BindingResult result, ModelMap model){
@@ -40,5 +46,4 @@ public class SearchController {
 		}
 	    return "searchResult";
 	}
-
 }

@@ -13,7 +13,7 @@ public class EmployeeService {
 	
 	EmployeeDAO empDAO;
 	Employee employee;
-	static List<Employee> employeeList = new ArrayList<Employee>();
+	public static List<Employee> employeeList = new ArrayList<Employee>();
 	
 	public EmployeeService(Employee employee){
 		this.employee = employee; 
