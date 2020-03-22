@@ -1,10 +1,14 @@
 package com.controllers;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;
 
@@ -16,16 +20,12 @@ import com.services.EmployeeService;
 public class HelloController{
  
    @RequestMapping(value ="/employee", method = RequestMethod.GET)
-   public ModelAndView showForm() {
-      return new ModelAndView("employee","employee", new Employee());
+   public String showForm() {
+      return "employee";
    }
    
-   @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-   public String submit(@ModelAttribute("employee")Employee employee, 
-     BindingResult result, ModelMap model) {
-       if (result.hasErrors()) {
-           return "error";
-       }
+   @RequestMapping(value = "/addEmployee", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+   public String submit(@RequestBody Employee employee, ModelMap model) {
        model.addAttribute("name", employee.getName());
        model.addAttribute("contactNumber", employee.getContactNumber());
        model.addAttribute("id", employee.getId());

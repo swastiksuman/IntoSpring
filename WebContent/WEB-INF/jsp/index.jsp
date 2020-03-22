@@ -8,32 +8,45 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Compiled and minified CSS -->
 <script>
-	function register(){
+	function register() {
 		$.ajax({
-			type: "GET",
-		  url: "/HelloWeb/employee",
-		  
-		  success: function( result ) {
-			  console.log(result);
-		    $( "#content" ).html(result);
-		  },
-		  error: function(error){
-			  console.log(error);
-		  }
+			type : "GET",
+			url : "/HelloWeb/employee",
+
+			success : function(result) {
+				console.log(result);
+				$("#content").html(result);
+			},
+			error : function(error) {
+				console.log(error);
+			}
 		});
 	}
-	function listAll(){
+	function listAll() {
 		$.ajax({
-			type: "GET",
-		  url: "/HelloWeb/getAll",
-		  
-		  success: function( result ) {
-			  console.log(result);
-		    $( "#content" ).html(result);
-		  },
-		  error: function(error){
-			  console.log(error);
-		  }
+			type : "GET",
+			url : "/HelloWeb/getAll",
+
+			success : function(result) {
+				console.log(result);
+				$("#content").html(result);
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+	}
+
+	function doSearch() {
+		$.ajax({
+			type : "GET",
+			url : "/HelloWeb/search",
+			success : function(result) {
+				$("#content").html(result);
+			},
+			error : function(error) {
+				console.log(error);
+			}
 		});
 	}
 </script>
@@ -46,16 +59,12 @@
 		<a href="#" class="brand-logo right">ZELTAR</a>
 		<ul id="nav-mobile" class="left hide-on-med-and-down">
 			<li onclick="register()">Register</li>
-			<li><a href="/HelloWeb/search">Search</a></li>
+			<li onclick="doSearch()">Search</li>
 			<li onclick="listAll()">List</li>
 		</ul>
 		<div class="container">
-			<div id="content" class="row">
-			
-			</div>
-			<div class="row">
-				
-			</div>
+			<div id="content" class="row"></div>
+			<div class="row"></div>
 		</div>
 	</div>
 	</nav>

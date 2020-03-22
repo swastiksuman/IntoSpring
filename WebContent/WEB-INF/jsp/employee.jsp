@@ -4,29 +4,52 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
     <head>
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    	<script>
+    		function doSubmit(){
+        		var x = $("#employeeForm").serialize();
+        		alert(x);
+			$.ajax({
+				type: "POST",
+	            contentType: "application/json",
+	            Accept : "application/json",
+				data: JSON.stringify(x),
+				dataType : 'json',
+				url: "/HelloWeb/addEmployee",
+				
+				success: function(){
+					$("#message").html("<p>Ho Gaya</p>");
+				}, error: function(){
+					alert('xxxx');
+					}
+			});
+    		}
+    	</script>
     </head>
     <body>
-        <form:form method="POST" action="/HelloWeb/addEmployee" modelAttribute="employee">
+        <form id="employeeForm">
              <table class="striped">
              	<tbody>
                 <tr>
-                    <td><form:label path="name">Name</form:label></td>
-                    <td><form:input path="name"/></td>
+                    <td><label>Name</label></td>
+                    <td><input name="name"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="id">Id</form:label></td>
-                    <td><form:input path="id"/></td>
+                    <td><label>Id</label></td>
+                    <td><input name="id"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="contactNumber">Contact Number</form:label></td>
-                    <td><form:input path="contactNumber"/></td>
+                    <td><label>Contact Number</label></td>
+                    <td><input name="contactNumber"/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit"/></td>
+                    <td><button onclick="doSubmit()">Submit</button></td>
                 </tr>
                 </tbody>
             </table>
-        </form:form>
+        </form>
+        <div id="message"></div>
     </body>
 </html>
  
