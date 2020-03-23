@@ -8,13 +8,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     	<script>
     		function doSubmit(){
-        		var x = $("#employeeForm").serialize();
-        		alert(x);
+        		var message = {"name": "asad", "id": 1, "contactNumber": "1231ads"};
+        		alert(message);
 			$.ajax({
 				type: "POST",
 	            contentType: "application/json",
 	            Accept : "application/json",
-				data: JSON.stringify(x),
+				data: {"name": "asad", "id": 1L, "contactNumber": "1231ads"},
 				dataType : 'json',
 				url: "/HelloWeb/addEmployee",
 				
@@ -33,15 +33,15 @@
              	<tbody>
                 <tr>
                     <td><label>Name</label></td>
-                    <td><input name="name"/></td>
+                    <td><input id="name" name="name"/></td>
                 </tr>
                 <tr>
                     <td><label>Id</label></td>
-                    <td><input name="id"/></td>
+                    <td><input id="id" name="id"/></td>
                 </tr>
                 <tr>
                     <td><label>Contact Number</label></td>
-                    <td><input name="contactNumber"/></td>
+                    <td><input id="contactNumber" name="contactNumber"/></td>
                 </tr>
                 <tr>
                     <td><button onclick="doSubmit()">Submit</button></td>
