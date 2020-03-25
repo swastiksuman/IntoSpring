@@ -24,14 +24,17 @@ public class HelloController{
       return "employee";
    }
    
-   @RequestMapping(value = "/addEmployee", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
-   public String submit(@RequestBody Employee employee, ModelMap model) {
-       model.addAttribute("name", employee.getName());
+   @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+   @ResponseBody
+   public String submit(@RequestParam("name") String name, ModelMap model) {
+	   System.out.println(name);
+       Employee employee = new Employee();
+	   model.addAttribute("name", employee.getName());
        model.addAttribute("contactNumber", employee.getContactNumber());
        model.addAttribute("id", employee.getId());
        EmployeeService employeeService = new EmployeeService(employee);
        employeeService.updateEmployee();
-       return "addEmployee";
+       return "<h1>ASDASD</h1>";
    }
 
 

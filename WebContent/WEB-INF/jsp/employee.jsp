@@ -8,21 +8,17 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     	<script>
     		function doSubmit(){
-        		var message = {"name": "asad", "id": 1, "contactNumber": "1231ads"};
+        		var message = {"name": "asad", "id": 1, "contactNumber": "ads"};
         		alert(message);
 			$.ajax({
 				type: "POST",
-	            contentType: "application/json",
-	            Accept : "application/json",
-				data: {"name": "asad", "id": 1L, "contactNumber": "1231ads"},
-				dataType : 'json',
-				url: "/HelloWeb/addEmployee",
+				url: "/HelloWeb/addEmployee?name=Swastik",
 				
 				success: function(){
 					$("#message").html("<p>Ho Gaya</p>");
-				}, error: function(){
-					alert('xxxx');
-					}
+				}, error: function(xhr, status, error) {
+					  alert(xhr.responseText);
+				}
 			});
     		}
     	</script>
@@ -44,11 +40,12 @@
                     <td><input id="contactNumber" name="contactNumber"/></td>
                 </tr>
                 <tr>
-                    <td><button onclick="doSubmit()">Submit</button></td>
+                    
                 </tr>
                 </tbody>
             </table>
         </form>
+        <button onclick="doSubmit()">Submit</button>
         <div id="message"></div>
     </body>
 </html>
