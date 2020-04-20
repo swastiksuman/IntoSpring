@@ -1,5 +1,6 @@
 package com.controllers;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,15 +19,18 @@ import com.services.EmployeeService;
 
 @Controller
 public class HelloController{
- 
+	static Logger logger = Logger.getLogger(HelloController.class);
+	
    @RequestMapping(value ="/employee", method = RequestMethod.GET)
    public String showForm() {
+	   logger.error("In Employee Page");
       return "employee";
    }
    
    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
    @ResponseBody
    public String submit(@RequestParam("name") String name, ModelMap model) {
+	   logger.error("Employee "+name);
 	   System.out.println(name);
        Employee employee = new Employee();
 	   model.addAttribute("name", employee.getName());
